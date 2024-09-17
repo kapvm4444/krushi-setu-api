@@ -7,8 +7,14 @@ const sideNavbar = fs.readFileSync(
 );
 
 exports.getDashboard = (req, res) => {
-  const templateDashboard = fs.readFileSync(
+  let templateDashboard = fs.readFileSync(
     `${__dirname}/../public/html/dashboard.html`,
     'utf-8',
   );
+
+  templateDashboard = templateDashboard.replace(/{!SIDEBAR}/, sideNavbar);
+  res.end(templateDashboard);
 };
+
+//todo
+// Work is pending
